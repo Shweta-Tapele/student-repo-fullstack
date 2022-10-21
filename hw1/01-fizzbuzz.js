@@ -9,6 +9,8 @@ Use console.log() to write the proper output to the command line.
 
 **/
 
+
+
 const fizzbuzz = () => {
   // Add your code here
   for (i=1; i<=100;i++){
