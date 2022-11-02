@@ -32,7 +32,17 @@ const server = http.createServer((req, res) => {
   }
 
   // Add your code here
-
+  else {
+    res.write(`<table border="3">`); 
+    res.write(`<tr style=vertical-align:top>`); 
+    res.write('</tr>');}
+    url.searchParams.forEach((value, key) => {
+    res.write('<tr>'); 
+    res.write(`<td> ${key} </td>`); 
+    res.write(`<td> ${value} </td>`);
+    res.write('</tr>'); 
+    });
+    res.write('</table>'); 
   res.end();
 });
 
