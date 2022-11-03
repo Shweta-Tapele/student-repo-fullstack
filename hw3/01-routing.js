@@ -63,7 +63,7 @@ const server = http.createServer((req, res) => {
   }
   else if (req.url === `/cache`) {
     res.writeHead(200, {
-      'Content-Type': `text/html`,
+      'Content-Type': `text`,
       'Cache-Control': `max-age=86400`
     });
     res.write(`This resource was cached`);
