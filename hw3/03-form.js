@@ -29,8 +29,8 @@ else if(req.url === '/submit'){
         res.write(`<h2> Username: ${username} <h2>`);
         res.write(`<h2> Email: ${email} <h2>`);
         res.write(`<h2> Comments: ${comments} <h2>`);
-        if(newsletter != false){res.write(`<h2> Newsletter: Yes <h2>`);}
-        else{res.write('<h2> Newsletter: No, I dont want to signup<h2>');}
+        if(newsletter != false){res.write(`<h2> Newsletter: Yes,sign me up for the news letter.<h2>`);}
+        else{res.write('<h2> Newsletter: No, Thank you<h2>');}
         res.end();
         }
       });
