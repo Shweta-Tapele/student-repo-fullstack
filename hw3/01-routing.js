@@ -1,5 +1,3 @@
-
-
 const http = require(`http`);
 const port = process.env.PORT || 5001;
 
@@ -80,14 +78,14 @@ const server = http.createServer((req, res) => {
     }
   else if (req.url === `/check-cookies`) {
     res.writeHead(200, { 'Content-Type': 'text/html' });
-    const cookieexists = Cookies.get('Hello');
-    if(!cookieexists){
+    //const cookieexists = Cookies.get('Hello');
+    /*if(!cookieexists){
       res.write(`<h1> NO </h1>`);
     }
     else
     {
       res.write(`<h1>Yes</h1>`);
-    }
+    }*/
       res.end();
 
     
