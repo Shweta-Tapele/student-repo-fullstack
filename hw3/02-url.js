@@ -6,6 +6,9 @@ const server = http.createServer((req, res) => {
     '/attributes?hello=world&lorem=ipsum',
     '/items?first=1&second=2&third=3&fourth=4',
     '/characters?spongebob=squarepants&patrick=star&sandy=cheeks',
+    //to test blank value
+    '/superhero?captainAmerica=Chris&strange=benedict',
+    '/superpower?',
   ];
 
   // use the URL interface to work with URLs
@@ -36,7 +39,12 @@ const server = http.createServer((req, res) => {
     res.write(`<table border="3">`); 
     res.write(`<tr style=vertical-align:top>`); 
     res.write('</tr>');}
+
     url.searchParams.forEach((value, key) => {
+      /*if(!value && !key)
+      {
+          res.write('<h1> No key or value</h1>');
+      }*/
     res.write('<tr>'); 
     res.write(`<td> ${key} </td>`); 
     res.write(`<td> ${value} </td>`);
