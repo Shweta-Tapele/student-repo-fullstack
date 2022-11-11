@@ -12,7 +12,12 @@ app.set('view engine', 'pug');
 const url = 'https://restcountries.com/v3.1/all';
 
 // Add your code here
-
+let arr = [];
+axios.get(url)
+    .then(response => {
+        const data = response.data;
+        arr = data;
+    });
 app.get('/', (req, res) => {
   // render pug template for the index.html file
 
