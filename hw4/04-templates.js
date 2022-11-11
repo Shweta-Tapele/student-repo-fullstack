@@ -36,9 +36,12 @@ app.get('/capitals', (req, res) => {
   let arr1 =[];
   for(let i=0; i < len ;i++)
   {
-
+    let val = `${arr[i].name.common} - ${arr[i].capital}`;
+    arr.push(val);
   }
-  //sort the aray
+  //sort
+  arr.sort((a,b) => a.localeCompare(b));
+   
   res.render('page', {
     heading: 'Countries and Capitals',
     results: countries,
