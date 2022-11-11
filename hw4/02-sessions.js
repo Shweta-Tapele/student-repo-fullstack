@@ -25,9 +25,23 @@ app.get('*', (req, res) => {
   if (req.session.visit === undefined){
     req.session.visit = [];
     req.session.visit.push('/');
-    res.write('Current route: ')
+    res.send(`Current route: /  \n Welcome First timer`);
   }
-});
+  else{
+    const curr_route = req.originalUrl;
+    res.write(`<div> Currently on route: ${curr_route} </div>`);
+    res.write(`<h4> previously visited :</h4>`);
+    res.write(`<ul>`);
+    let list = ``;
+    req.session.visit.forEach(
+      (element) => (list += `<li> ${element}</li>`)
+    );
+    res.write(list);
+    res.end();
+      
+    }
+  }
+);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
