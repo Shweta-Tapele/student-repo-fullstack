@@ -31,8 +31,14 @@ app.get('/capitals', (req, res) => {
   // map the output array to create an array with country names and capitals
   // check for empty data in the output array
 
-  let countries = ['Afghanistan', 'Aland Islands', 'Albania'];
+  //let countries = ['Afghanistan', 'Aland Islands', 'Albania'];
+  let len = arr.length;
+  let arr1 =[];
+  for(let i=0; i < len ;i++)
+  {
 
+  }
+  //sort the aray
   res.render('page', {
     heading: 'Countries and Capitals',
     results: countries,
