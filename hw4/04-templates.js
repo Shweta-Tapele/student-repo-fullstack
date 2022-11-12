@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 
 // Use Pug as the templating engine
 app.set('views', __dirname + '/views');
@@ -12,7 +12,12 @@ app.set('view engine', 'pug');
 const url = 'https://restcountries.com/v3.1/all';
 
 // Add your code here
-
+let arr = [];
+axios.get(url)
+    .then(response => {
+        const data = response.data;
+        arr = data;
+    });
 app.get('/', (req, res) => {
   // render pug template for the index.html file
 
@@ -26,8 +31,19 @@ app.get('/capitals', (req, res) => {
   // map the output array to create an array with country names and capitals
   // check for empty data in the output array
 
-  let countries = ['Afghanistan', 'Aland Islands', 'Albania'];
+  //let countries = ['Afghanistan', 'Aland Islands', 'Albania'];
+  let len = arr.length;
+  let countries =[];
+  for(let i=0; i < len ;i++)
+  {
+    let val = `${arr[i].name.common} - ${arr[i].capital}`;
+    countries.push(val);
+  }
+  //sort
 
+  
+  countries.sort((a,b) => a.localeCompare(b));
+   
   res.render('page', {
     heading: 'Countries and Capitals',
     results: countries,
