@@ -17,18 +17,21 @@ app.use(
   },
 })
 );
-
+app.get('/favicon.ico', (req, res) => {
+  res.end();
+});
 app.get('*', (req, res) => {
   // Add your code here
   res.status(200);
-  res.set({'Content-Type': 'text/plain'});
+  res.set({'Content-Type': 'text/html'});
   if (req.session.visit === undefined){
     req.session.visit = [];
     req.session.visit.push('/');
-    res.send(`Current route: /  \n Welcome First timer`);
+    res.send(`Current route: /  \n Welcome to http://localhost:${port}`);
   }
   else{
     const curr_route = req.originalUrl;
+    req.session.visit.push(req.url);
     res.write(`<div> Currently on route: ${curr_route} </div>`);
     res.write(`<h4> previously visited :</h4>`);
     res.write(`<ul>`);
@@ -37,9 +40,10 @@ app.get('*', (req, res) => {
       (element) => (list += `<li> ${element}</li>`)
     );
     res.write(list);
-    res.end();
+    res.write(`</ul>`);
       
     }
+    res.end();
   }
 );
 
